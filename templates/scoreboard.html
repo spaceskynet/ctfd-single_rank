@@ -30,6 +30,9 @@
 							<td scope="col"><b>Team</b></td>
 							<td scope="col"><b>Score</b></td>
 							<td scope="col"><b>Solves</b></td>
+						{% if not request.args.category or request.args.category == 'All' %}
+							<td scope="col"><b>Awards</b></td>
+						{% endif %}
 							<td scope="col"><b>Last Point Time</b></td>
 						</tr>
 					</thead>

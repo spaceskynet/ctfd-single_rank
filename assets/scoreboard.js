@@ -45,9 +45,11 @@ function updatescoresByCategory() {
           oauth_html
         ) +
         "<td>{0}</td>".format(teams[i].scores) +
-        "<td>{0}</td>".format(teams[i].solves) +
-        "<td>{0}</td>".format(date) +
-        "</tr>";
+        "<td>{0}</td>".format(teams[i].solves_len);
+      if(category === "All"){
+        row += "<td>{0}</td>".format(teams[i].awards_len);
+      }
+      row += "<td>{0}</td>".format(date) + "</tr>";
       table.append(row);
     }
   });
@@ -152,9 +154,9 @@ const buildGraphData = function(){
     for (let i = 0; i < teams.length; i++) {
       const team_score = [];
       const times = [];
-      for (let j = 0; j < places[teams[i]]["solves"].length; j++) {
-        team_score.push(places[teams[i]]["solves"][j].value);
-        const date = Moment(places[teams[i]]["solves"][j].date);
+      for (let j = 0; j < places[teams[i]]["solves_awards"].length; j++) {
+        team_score.push(places[teams[i]]["solves_awards"][j].value);
+        const date = Moment(places[teams[i]]["solves_awards"][j].date);
         times.push(date.toDate());
       }
 
