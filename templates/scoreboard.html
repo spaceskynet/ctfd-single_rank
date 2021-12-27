@@ -47,6 +47,10 @@
 
 {% block scripts %}
 	<script defer src="{{ url_for('views.themes', path='js/echarts.bundle.js') }}"></script>
+	<!--Fix CTFd 3.2.0v Removed MomentJS-->
+	<script defer src="{{ url_for('plugins.ctfd-single_rank.assets', path='dayjs.min.js') }}"></script>
+	<script defer src="{{ url_for('plugins.ctfd-single_rank.assets', path='relativeTime.js') }}"></script>
+	
 	<script defer src="{{ url_for('plugins.ctfd-single_rank.assets', path='echarts.min.js') }}"></script>
 	<script defer src="{{ url_for('plugins.ctfd-single_rank.assets', path='scoreboard.js') }}"></script>
 {% endblock %}

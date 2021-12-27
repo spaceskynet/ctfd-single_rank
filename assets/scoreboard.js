@@ -1,5 +1,8 @@
 if($ === undefined) $ = CTFd.lib.$;
 const graph = $("#score-graph");
+if(dayjs().fromNow === undefined){
+	dayjs.extend(dayjs_plugin_relativeTime);
+}
 
 function htmlentities(string) {
   return $("<div/>")
@@ -33,9 +36,7 @@ function updatescoresByCategory() {
           oauth_html = '<a href="https://majorleaguecyber.org/u/{0}">\n<span class="badge badge-primary">Official</span>\n</a>'.format(teams[i].oauth_id)
         }
       }
-      const date = Moment(teams[i].last_point_time)
-        .local()
-        .fromNow();
+      const date = dayjs(teams[i].last_point_time).fromNow();
       var row =
         "<tr>\n" +
         '<th scope="row" class="text-center">{0}</th>'.format(teams[i].pos) +
@@ -156,7 +157,7 @@ const buildGraphData = function(){
       const times = [];
       for (let j = 0; j < places[teams[i]]["solves_awards"].length; j++) {
         team_score.push(places[teams[i]]["solves_awards"][j].value);
-        const date = Moment(places[teams[i]]["solves_awards"][j].date);
+        const date = dayjs(places[teams[i]]["solves_awards"][j].date);
         times.push(date.toDate());
       }
 
